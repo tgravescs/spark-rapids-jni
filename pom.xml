@@ -88,8 +88,7 @@
     <ai.rapids.refcount.debug>false</ai.rapids.refcount.debug>
     <cuda.version>cuda11</cuda.version>
     <jni.classifier>${cuda.version}</jni.classifier>
-    <thirdparty.path>${project.basedir}/thirdparty</thirdparty.path>
-    <cudf.path>${thirdparty.path}/cudf</cudf.path>
+    <cudf.path>${project.basedir}/thirdparty/cudf</cudf.path>
     <hadoop.version>3.2.4</hadoop.version>
     <junit.version>5.8.1</junit.version>
     <libcudf.build.path>${cudf.path}/cpp/build</libcudf.build.path>
