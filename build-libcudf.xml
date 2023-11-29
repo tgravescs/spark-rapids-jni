@@ -31,6 +31,16 @@
 
     <mkdir dir="${libcudf.install.path}"/>
     <mkdir dir="${libcudf.build.path}"/>
+
+    <exec dir="${cudf.path}"
+          failonerror="true"
+          executable="patch">
+      <arg value="-p1"/>
+      <arg value="-N"/>
+      <arg value="-i"/>
+      <arg value="../patches/cudfrmm.patch"/>
+    </exec>
+
     <exec dir="${libcudf.build.path}"
           failonerror="true"
           executable="cmake"
