@@ -43,7 +43,6 @@
           if:true="${rmm-patch.present}"
 	  executable="patch">
       <arg value="-p1"/>
-      <arg value="-N"/>
       <arg value="-i"/>
       <arg value="../patches/cudfrmm.patch"/>
     </exec>
