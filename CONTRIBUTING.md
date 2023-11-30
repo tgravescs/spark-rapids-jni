@@ -66,6 +66,14 @@ settings. If an explicit reconfigure of libcudf is needed (e.g.: when changing c
 `GPU_ARCHS`, `CUDF_USE_PER_THREAD_DEFAULT_STREAM`, etc.) then a configure can be forced via
 `-Dlibcudf.build.configure=true`.
 
+#### Patches to cudf
+There is a patch that is applied to cudf to fix a bug we found after cudf was released. This patch
+exists in thirdparty/patches directory. This patch actually patches cudf in a way that it then
+will patch rmm. It gets applied via the build-libcudf.xml file.
+If changes are are going to make changes to the patch file, to get them to properly apply, you must first
+do a clean and specify `-Dpatches.clean.skip=false` to clean up the patched files. Or alternatively you
+can manually clean up those files in thirdparty/cudf.
+
 ### Build Properties
 
 The following build properties can be set on the Maven command-line (e.g.: `-DCPP_PARALLEL_LEVEL=4`)

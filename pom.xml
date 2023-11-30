@@ -94,6 +94,7 @@
     <libcudf.build.path>${cudf.path}/cpp/build</libcudf.build.path>
     <libcudf.build.configure>false</libcudf.build.configure>
     <libcudf.clean.skip>true</libcudf.clean.skip>
+    <patches.clean.skip>true</patches.clean.skip>
     <libcudf.install.path>${project.build.directory}/libcudf-install</libcudf.install.path>
     <libcudfjni.build.path>${project.build.directory}/libcudfjni</libcudfjni.build.path>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -372,6 +373,28 @@
               <skip>${libcudf.clean.skip}</skip>
               <target>
                 <delete dir="${libcudf.build.path}" includeemptydirs="true"/>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>clean patches</id>
+            <phase>clean</phase>
+            <configuration>
+              <skip>${patches.clean.skip}</skip>
+              <target>
+                <exec dir="${project.basedir}"
+                      failonerror="false"
+                      executable="patch">
+                  <arg value="-d"/>
+		  <arg value="${project.basedir}/thirdparty/cudf"/>
+                  <arg value="-p1"/>
+                  <arg value="--reverse"/>
+                  <arg value="-i"/>
+		  <arg value="${project.basedir}/thirdparty/patches/cudfrmm.patch"/>
+                </exec>
               </target>
             </configuration>
             <goals>
